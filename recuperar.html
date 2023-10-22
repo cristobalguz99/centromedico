@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña - Centro Médico Galenos</title>
+    <!-- Incluye Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Estilos personalizados para el fondo celeste -->
+    <style>
+        body {
+            background-color: #4db6ac; /* Fondo celeste */
+        }
+        .container {
+            background-color: #fff; /* Fondo blanco para el formulario */
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Recuperar Contraseña</h2>
+        <form id="recuperarForm">
+            <div class="form-group">
+                <label for="correo">Correo Electrónico</label>
+                <input type="email" class="form-control" id="correo" placeholder="Correo Electrónico" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+        </form>
+        <div class="text-center mt-4">
+            <a href="login-v2.html" class="btn btn-primary btn-lg">Volver Atrás</a>
+        </div>    
+    </div>
+
+    <!-- Incluye Bootstrap JS y jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById("recuperarForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const correo = document.getElementById("correo").value;
+
+            // Realiza la llamada al API para enviar la solicitud de recuperación de contraseña aquí.
+            // Puedes mostrar una ventana emergente o un mensaje de confirmación si la solicitud se envía con éxito.
+        });
+    </script>
+</body>
+</html>
