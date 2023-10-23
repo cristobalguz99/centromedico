@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Próximas Citas</title>
+    <!-- Incluye Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Estilos personalizados para el fondo celeste -->
+    <style>
+        body {
+            background-color: #4db6ac; /* Fondo celeste */
+        }
+        .container {
+            background-color: #fff; /* Fondo blanco para el contenido */
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Próximas Citas</h2>
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Cita 1 - Fecha: [Fecha], Hora: [Hora]
+                <span>
+                    <button class="btn btn-danger" onclick="cancelarCita(1)">Cancelar Cita</button>
+                    <button class="btn btn-primary" onclick="modificarCita(1)">Modificar Cita</button>
+                    <button class="btn btn-success" onclick="realizarPago(1)">Realizar Pago</button>
+                    <button class="btn btn-info" onclick="agregarDescuento(1)">Agregar Descuento</button>
+                </span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Cita 2 - Fecha: [Fecha], Hora: [Hora]
+                <span>
+                    <button class="btn btn-danger" onclick="cancelarCita(2)">Cancelar Cita</button>
+                    <button class="btn btn-primary" onclick="modificarCita(2)">Modificar Cita</button>
+                    <button class="btn btn-success" onclick="realizarPago(2)">Realizar Pago</button>
+                    <button class="btn btn-info" onclick="agregarDescuento(2)">Agregar Descuento</button>
+                </span>
+            </li>
+            <!-- Agrega más citas aquí -->
+        </ul>
+    </div>
+
+    <!-- Incluye Bootstrap JS y jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+    <script>
+        function cancelarCita(citaId) {
+            // Aquí verifica si se puede cancelar la cita (diferencia de tiempo).
+            // Si se puede cancelar, muestra un mensaje; de lo contrario, muestra otro mensaje.
+            // Puedes implementar tu lógica de verificación de tiempo aquí.
+            if (sePuedeCancelarCita()) {
+                alert(`Cita ${citaId} cancelada exitosamente.`);
+            } else {
+                alert(`No se puede cancelar la cita ${citaId} en este momento.`);
+            }
+        }
+
+        function modificarCita(citaId) {
+            // Agrega la lógica para modificar la cita aquí.
+            alert(`Modificando Cita ${citaId}`);
+        }
+
+        function realizarPago(citaId) {
+            // Agrega la lógica para realizar el pago de la cita aquí.
+            alert(`Realizando Pago para Cita ${citaId}`);
+        }
+
+        function agregarDescuento(citaId) {
+            // Agrega la lógica para agregar descuento a la cita aquí.
+            alert(`Agregando Descuento para Cita ${citaId}`);
+        }
+
+        function sePuedeCancelarCita() {
+            // Implementa la lógica para verificar si se puede cancelar la cita.
+            // Retorna true si se puede cancelar, de lo contrario, retorna false.
+            // Puedes usar la diferencia de tiempo entre la hora actual y la hora de la cita.
+            // Por ejemplo:
+            const horaActual = new Date();
+            const horaCita = new Date('2023-10-26T14:00:00'); // Ejemplo: fecha y hora de la cita.
+            const diferenciaHoras = (horaCita - horaActual) / (60 * 60 * 1000); // Diferencia en horas.
+
+            return diferenciaHoras > 2; // Si la diferencia es mayor a 2 horas, se puede cancelar.
+        }
+    </script>
+</body>
+</html>

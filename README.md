@@ -1,2 +1,0 @@
-# centromedico
-centromedico
