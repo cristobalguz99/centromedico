@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario HTML</title>
+</head>
+<body>
+    <form id="miFormulario">
+        <label for="campo1">Campo 1:</label>
+        <input type="text" id="campo1" name="campo1" />
+
+        <label for="campo2">Campo 2:</label>
+        <input type="text" id="campo2" name="campo2" />
+
+        <input type="submit" value="Enviar" id="enviarBtn">
+    </form>
+
+    <script>
+        document.getElementById('miFormulario').addEventListener('submit', function(event) {
+            event.preventDefault(); // Previene el envío tradicional del formulario
+
+            // Captura los datos del formulario
+            var campo1 = document.getElementById('campo1').value;
+            var campo2 = document.getElementById('campo2').value;
+
+            // Crea un objeto JSON con los datos
+            var data = {
+                campo1: campo1,
+                campo2: campo2
+            };
+
+            // Convierte el objeto JSON a una cadena JSON
+            var jsonData = JSON.stringify(data);
+
+            // Realiza una solicitud AJAX utilizando la biblioteca jQuery
+            $.ajax({
+                url: 'URL_DEL_PUNTO_FINAL_DE_API_GATEWAY',
+                type: 'POST',
+                data: jsonData,
+                contentType: 'application/json',
+                success: function(response) {
+                    // Maneja la respuesta del API Gateway (puedes mostrar un mensaje de éxito u otra acción)
+                    console.log('Respuesta del API Gateway:', response);
+                },
+                error: function(error) {
+                    // Maneja errores en la solicitud
+                    console.error('Error en la solicitud:', error);
+                }
+            });
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>

@@ -57,6 +57,7 @@
                 </select>
             </div>
             <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+
         </form>
 
         <div class="text-center mt-4">
@@ -65,22 +66,63 @@
     </div>
 
     <!-- Incluye Bootstrap JS y jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
-    <script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+
         document.getElementById("registroForm").addEventListener("submit", function(event) {
             event.preventDefault();
-            const nombre = document.getElementById("nombre").value;
-            const rut = document.getElementById("rut").value;
-            const correo = document.getElementById("correo").value;
-            const fechaNacimiento = document.getElementById("fechaNacimiento").value;
-            const direccion = document.getElementById("direccion").value;
-            const telefono = document.getElementById("telefono").value;
-            const prevision = document.getElementById("prevision").value;
 
-            // Validación de RUT, correo, teléfono y otros campos
-            // Realiza la llamada al API para registrar al usuario aquí y muestra la ventana emergente.
+            var nombre = document.getElementById("nombre").value;
+            var rut = document.getElementById("rut").value;
+            var correo = document.getElementById("correo").value;
+            var fechaNacimiento = document.getElementById("fechaNacimiento").value;
+            var direccion = document.getElementById("direccion").value;
+            var telefono = document.getElementById("telefono").value;
+            var prevision = document.getElementById("prevision").value;
+                    
+            // Crea un objeto JSON con los datos
+            var data = {
+                nombre: nombre,
+                rut: rut,
+                correo: correo,
+                fechaNacimiento: fechaNacimiento,
+                direccion: direccion,
+                telefono: telefono,
+                prevision: prevision,
+            };
+
+            // Convierte el objeto JSON a una cadena JSON
+            var jsonData = JSON.stringify(data);
+
+            console.log(jsonData)
+
+            // Realiza una solicitud AJAX utilizando la biblioteca jQuery
+            $.ajax({
+                url: 'https://p8v88dq7u2.execute-api.us-east-2.amazonaws.com/my_sql/test',
+                type: 'POST',
+                data: jsonData,
+                contentType: 'application/json',
+                success: function(response) {
+                    // Maneja la respuesta del API Gateway (puedes mostrar un mensaje de éxito u otra acción)
+                    console.log('Respuesta del API Gateway:', response);
+                },
+                error: function(error) {
+                    // Maneja errores en la solicitud
+                    console.error('Error en la solicitud:', error);
+                }
+            });
         });
+
     </script>
+
+
+
+
 </body>
 </html>
+
